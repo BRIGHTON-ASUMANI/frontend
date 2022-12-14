@@ -6,11 +6,11 @@ import Rating from './Rating'
 function Product({ product }) {
   return (
     <Card className='my-3 p-3 rounded'>
-        <Link to={`/product/${Product._id}`}>
+        <Link to={`/product/${product._id}`}>
             <Card.Img src={product.image} />
         </Link>
         <Card.Body>
-            <Link to={`/product/${Product._id}`}>
+            <Link to={`/product/${product._id}`}>
                 <Card.Title as="div">
                     <strong>{product.name}</strong>
                 </Card.Title>
