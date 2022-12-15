@@ -8,17 +8,15 @@ import ProductScreen from './Screens/ProductScreen';
 
 
 function App() {
-
   return (
     <Router>
      <Header/>
      <main className='py-3'>
         <Container>
         <Routes>
-          <Route path="/" component={HomeScreen} exact />
-          <Route path="/product/:id" component={ProductScreen} />
+          <Route path="/" element={<HomeScreen />} exact />
+          <Route path="/product/:id" element={<ProductScreen />} />
           </Routes>
-         <HomeScreen/>
         </Container>
      </main>
      <Footer/>
