@@ -20,7 +20,7 @@ function ProductScreen() {
 
     return (
         <div>
-            <Link to="/" className="btn btn-light">GO Back</Link>
+            <Link to="/" className="btn btn-light">Go Back</Link>
             <Row>
                 <Col md={6}>
                     <Image src={product.image} alt={product.name} fluid />
