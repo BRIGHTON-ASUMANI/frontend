@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Button, Col, Form, Image, ListGroup, Row } from 'react-bootstrap';
+import { Alert, Button, Col, Form, Image, ListGroup, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useSearchParams, Link, useNavigate } from 'react-router-dom';
 import { addToCart, removeFromCart } from '../actions/cartActions';
@@ -35,9 +35,12 @@ function CartScreen() {
             <Col md={8}>
                 <h1>Shopping Cart</h1>
                 {cartItems.length === 0 ? (
-                    <Message>
+                    <Alert variant='info'>
                         Your Cart is empty <Link to="/">Go Back</Link>
-                    </Message>
+                    </Alert>
+                    // <Message variant='info'>
+                    //     Your Cart is empty <Link to="/">Go Back</Link>
+                    // </Message>
                 ): (
                     <ListGroup variant='flush'>
                         {cartItems.map((item, i)=>(
