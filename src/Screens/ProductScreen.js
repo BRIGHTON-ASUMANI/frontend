@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card, Col, Image, ListGroup, Row, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { listProductDetails } from '../actions/productActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -10,9 +9,9 @@ import Rating from '../components/Rating'
 
 
 function ProductScreen() {
+    const navigate = useNavigate()
     const [ qty, setQty] = useState(1);
     const { id } = useParams();
-    const navigate = useNavigate();
     const dispatch = useDispatch()
     const productDetails = useSelector(state => state.productDetails)
     const { error, loading, product} = productDetails
@@ -30,6 +29,7 @@ function ProductScreen() {
     return (
         <div>
             <Link to="/" className="btn btn-light">Go Back</Link>
+
             {loading? <Loader/>: 
           error? <Message variant="danger">{error}</Message>:
 
