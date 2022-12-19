@@ -1,14 +1,16 @@
 import React from 'react'
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import ControlledCarousel from './HomeCarousel'
 
 function Header() {
   return (
+    <>
     <header>
-    <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+    <Navbar variant="dark"  className="navbar navbar-dark navbar-expand-md py-0 fixed-top" collapseOnSelect>
     <Container>
       <LinkContainer to="/">
-        <Navbar.Brand href="/">Cake</Navbar.Brand>
+        <Navbar.Brand className='navbar-brand' href="/">Cake</Navbar.Brand>
       </LinkContainer>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
@@ -29,6 +31,8 @@ function Header() {
     </Container>
   </Navbar>
   </header>
+  <ControlledCarousel />
+  </>
   )
 }
 
