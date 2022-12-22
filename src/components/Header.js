@@ -1,9 +1,21 @@
 import React from 'react'
-import { Button, Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
+import { logout } from '../actions/userActions'
 import ControlledCarousel from './HomeCarousel'
 
 function Header() {
+
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
+  const dispatch = useDispatch()
+
+  const logoutHandler = () =>{
+    dispatch(logout)
+    
+  }
+
   return (
     <>
     <header>
@@ -22,9 +34,19 @@ function Header() {
           <LinkContainer to="/cart">
             <Nav.Link href="#action1"><i className='fas fa-home'/> Cart</Nav.Link>
           </LinkContainer>
-          <LinkContainer to="/login">
-          <Nav.Link href="#action2"><i className='fas fa-user'/> Link</Nav.Link>
-          </LinkContainer>
+          {userInfo ?(
+            <NavDropdown title={userInfo.name} id="username">
+              <LinkContainer to='profile'>
+                <NavDropdown.Item>Profile</NavDropdown.Item>
+              </LinkContainer>
+              <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+            </NavDropdown>
+          ): (
+            <LinkContainer to="/login">
+            <Nav.Link><i className='fas fa-user'/> Login</Nav.Link>
+            </LinkContainer>
+          )}
+         
         </Nav>
        
       </Navbar.Collapse>
