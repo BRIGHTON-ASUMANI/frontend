@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import {Row, Col} from 'react-bootstrap'
+import {Row, Col, Alert} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../actions/productActions';
 import Loader from '../components/Loader';
@@ -20,7 +20,7 @@ function HomeScreen() {
     <div>
       <h1>Latest products</h1>
       {loading? <Loader />: 
-          error? <Message variant="danger">{error}</Message>:
+          error? <Alert variant="danger">{error}</Alert>:
           <Row>
           {products.map((product, i) =>(
               <Col key={i} sm={12} md={6} lg={4} xl={3}>
